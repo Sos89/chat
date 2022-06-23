@@ -11,7 +11,7 @@
 <script>
 import MessageItem from "./messageItem";
 export default {
-    name: "messageContioner",
+    name: "messageContainer",
     components: {MessageItem},
     props: ['messages']
 }
