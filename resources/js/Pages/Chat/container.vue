@@ -46,9 +46,9 @@ export default {
       }
     },
     watch: {
-        currentRoom( val, olVal ){
-            if ( olVal.id ){
-                this.disconnect( olVal );
+        currentRoom( val, oldVal ){
+            if ( oldVal.id ){
+                this.disconnect( oldVal );
             }
             this.connect();
         }
