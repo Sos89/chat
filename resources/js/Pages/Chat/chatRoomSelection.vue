@@ -6,7 +6,7 @@
         <div>
             <select
                 v-model="selected"
-                @xhange="$emit('roomchanged', selected)"
+                @change="$emit('roomChanged', selected)"
                 class="float-right">
                 <option
                     v-for="(room, index ) in rooms"
