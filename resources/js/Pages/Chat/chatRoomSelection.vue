@@ -11,7 +11,7 @@
                 <option
                     v-for="(room, index ) in rooms"
                     :key="index"
-                    value=" room "
+                    :value=" room "
                     >
                     {{ room.name }}
                 </option>

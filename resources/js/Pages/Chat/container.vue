@@ -14,7 +14,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <message-container :messages="messages"/>
+                    <message-container :messages="messages" />
                     <input-message
                         :room="currentRoom"
                         v-on:messagesent="getMessages()"
@@ -29,14 +29,14 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import MessageContainer from "./messageContainer";
 import InputMessage from "./inputMessage";
-import chatRoomSelection from "./chatRoomSelection";
+import ChatRoomSelection from "./chatRoomSelection";
 export default {
     name: "container",
     components: {
+        AppLayout,
         InputMessage,
         MessageContainer,
-        chatRoomSelection,
-        AppLayout
+        ChatRoomSelection,
     },
     data: function (){
       return {
@@ -45,9 +45,31 @@ export default {
           messages: []
       }
     },
+    watch: {
+        currentRoom( val, olVal ){
+            if ( olVal.id ){
+                this.disconnect( olVal );
+            }
+            this.connect();
+        }
+    },
     methods: {
+        connect(){
+            if ( this.currentRoom.id ) {
+                let vm = this;
+                this.getMessages();
+                window.Echo.private("chat." + this.currentRoom.id )
+                    .listen('.message.new', e => {
+                        vm.getMessages();
+                    })
+            }
+        },
+        disconnect( room ) {
+            window.Echo.leave("chat." + room.id );
+        },
         getRooms(){
-            axios.get('/chat/rooms').then(response => {
+            axios.get('/chat/rooms')
+                .then(response => {
                 this.chatRooms = response.data;
                 this.setRoom( response.data[0]);
             })
@@ -57,7 +79,7 @@ export default {
         },
         setRoom ( room ) {
             this.currentRoom = room;
-            this.getMessages();
+
         },
         getMessages(){
             axios.get('/chat/room/' + this.currentRoom.id + '/messages')
