@@ -18,8 +18,10 @@
 </template>
 
 <script>
+import Input from '../../Jetstream/Input.vue'
 export default {
     name: "inputMessage",
+    components: {Input},
     props: ['room'],
     data: function (){
         return {

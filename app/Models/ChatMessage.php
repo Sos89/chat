@@ -11,10 +11,10 @@ class ChatMessage extends Model
 
     public function room()
     {
-        return $this->hasMany('App\Models\ChatRoom', 'id', 'chat_room_id');
+        return $this->hasOne('App\Models\ChatRoom', 'id', 'chat_room_id');
     }
     public function user()
     {
-        return $this->hasMany('App\Models\User', 'id', 'user_id');
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 }
