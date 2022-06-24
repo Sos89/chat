@@ -45,5 +45,5 @@ Route::middleware([
 });
 
 Route::middleware('auth:sanctum')->get('/chat/rooms', [ChatController::class, 'rooms']);
-Route::middleware('auth:sanctum')->get('/chat/rooms{roomId}/messages', [ChatController::class, 'messages']);
-Route::middleware('auth:sanctum')->post('/chat/rooms{roomId}/message', [ChatController::class, 'newMessages']);
+Route::middleware('auth:sanctum')->get('/chat/room/{roomId}/messages', [ChatController::class, 'messages']);
+Route::middleware('auth:sanctum')->post('/chat/room/{roomId}/message', [ChatController::class, 'newMessage']);

@@ -4,7 +4,8 @@
             <input
                 type="text"
                 v-model="message"
-                @keyup.enter="Say"
+                @keyup.enter="sendMessage()"
+                placeholder="See something..."
                 class="col-span-5 outline-none p-1"
             />
             <button
