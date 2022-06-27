@@ -2,6 +2,7 @@
     <div>
 
         {{message.user.name}} : {{ message.message }}
+
     </div>
 </template>
 

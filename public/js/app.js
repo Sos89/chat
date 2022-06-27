@@ -21427,9 +21427,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   watch: {
-    currentRoom: function currentRoom(val, olVal) {
-      if (olVal.id) {
-        this.disconnect(olVal);
+    currentRoom: function currentRoom(val, oldVal) {
+      if (oldVal.id) {
+        this.disconnect(oldVal);
       }
 
       this.connect();
