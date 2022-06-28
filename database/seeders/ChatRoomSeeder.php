@@ -20,5 +20,8 @@ class ChatRoomSeeder extends Seeder
         DB::table('chat_rooms')->insert([
             'name' => 'Tech Talk'
         ]);
+        DB::table('chat_rooms')->insert([
+            'name' => 'Private'
+        ]);
     }
 }
