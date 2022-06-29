@@ -5,7 +5,6 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 User Dashboard
                 <Link class="float-right" :href="route('users.create')"
-                v-if="$page.props.permission.users.viewAny"
                 >
                     <JetButton>Create</JetButton>
                 </Link>
@@ -72,7 +71,7 @@
                                                 <Link
                                                     :href="route('users.show', user.id )"
                                                     class="text-indigo-600 hover:text-indigo-900"
-                                                    v-if="user.can.view"
+
                                                 >
 
                                                     Show
@@ -80,7 +79,7 @@
                                                 <Link
                                                     :href="route('users.edit', user.id )"
                                                     class="ml-2 text-indigo-600 hover:text-indigo-900"
-                                                    v-if="user.can.update"
+
                                                 >
                                                     Edit
                                                 </Link>
