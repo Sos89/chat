@@ -8,10 +8,10 @@ use Inertia\Inertia;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->authorizeResource(User::class);
-    }
+//    public function __construct()
+//    {
+//        $this->authorizeResource(User::class);
+//    }
 
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::get();
        return Inertia::render('User/Dashboard', compact('users'));
     }
 
@@ -59,7 +59,6 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
@@ -92,6 +91,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+//        $user = User::find($id);
+//        $user->deleteProfilePhoto();
+//        $user->tokens->each->delete();
+//        $user->delete();
     }
 }

@@ -18,13 +18,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('gender');
+            $table->string('status')->default(0);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->string('role')->default('user');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
     }

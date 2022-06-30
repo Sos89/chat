@@ -9,8 +9,19 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <!--                    <Welcome />-->
-                    User Create
+                        <div class="col-span-6 sm:col-span-4">
+                            <JetLabel for="name" value="Name" class="m-3"/>
+                            <JetInput
+                                id="name"
+                                v-model="name"
+                                type="text"
+                                class="m-3 block w-1/3"
+                                autocomplete="name"
+                            />
+                            <JetButton class="m-3">
+                                Save
+                            </JetButton>
+                        </div>
                 </div>
             </div>
         </div>
@@ -19,11 +30,33 @@
 
 <script>
 import AppLayout from '@/Layouts/AppLayout.vue';
+import { ref } from 'vue';
+import { Inertia } from '@inertiajs/inertia';
+import { Link, useForm } from '@inertiajs/inertia-vue3';
+import JetButton from '@/Jetstream/Button.vue';
+import JetFormSection from '@/Jetstream/FormSection.vue';
+import JetInput from '@/Jetstream/Input.vue';
+import JetInputError from '@/Jetstream/InputError.vue';
+import JetLabel from '@/Jetstream/Label.vue';
+import JetActionMessage from '@/Jetstream/ActionMessage.vue';
+import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue';
 export default {
     name: "Create",
     components: {
-        AppLayout
-    }
+        AppLayout,
+        ref,
+        Inertia,
+        Link,
+        useForm,
+        JetButton,
+        JetFormSection,
+        JetInput,
+        JetInputError,
+        JetLabel,
+        JetActionMessage,
+        JetSecondaryButton
+    },
+
 }
 </script>
 

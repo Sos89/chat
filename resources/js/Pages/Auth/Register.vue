@@ -12,6 +12,8 @@ const form = useForm({
     name: '',
     surname: '',
     gender: '',
+    status: '',
+    profile_photo_path: '',
     email: '',
     password: '',
     password_confirmation: '',
@@ -76,6 +78,15 @@ const submit = () => {
                     type="email"
                     class="mt-1 block w-full"
                     required
+                />
+            </div>
+            <div class="mt-4">
+                <JetLabel for="status"/>
+                <JetInput
+                    v-model="form.status"
+                    type="text"
+                    class="mt-1 block w-full hidden"
+                    hidden
                 />
             </div>
 

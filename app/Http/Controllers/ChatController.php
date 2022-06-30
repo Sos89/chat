@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\ChatRoom;
 use App\Models\ChatMessage;
@@ -11,6 +12,7 @@ use App\Events\NewChatMessage;
 class ChatController extends Controller
 {
     public function rooms(Request $request){
+//        return User::all();
         return ChatRoom::all();
     }
     public function messages(Request $request, $roomId){

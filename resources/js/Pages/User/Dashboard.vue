@@ -6,7 +6,7 @@
                 User Dashboard
                 <Link class="float-right" :href="route('users.create')"
                 >
-                    <JetButton>Create</JetButton>
+                    <JetButton>New Room</JetButton>
                 </Link>
             </h2>
         </template>
@@ -71,15 +71,12 @@
                                                 <Link
                                                     :href="route('users.show', user.id )"
                                                     class="text-indigo-600 hover:text-indigo-900"
-
                                                 >
-
                                                     Show
                                                 </Link>
                                                 <Link
                                                     :href="route('users.edit', user.id )"
                                                     class="ml-2 text-indigo-600 hover:text-indigo-900"
-
                                                 >
                                                     Edit
                                                 </Link>

@@ -26,9 +26,7 @@ const photoPreview = ref(null);
 const photoInput = ref(null);
 
 const updateProfileInformation = () => {
-    if (photoInput.value) {
-        form.photo = photoInput.value.files[0];
-    }
+
 
     form.post(route('user-profile-information.update'), {
         errorBag: 'updateProfileInformation',
@@ -40,6 +38,10 @@ const updateProfileInformation = () => {
 const sendEmailVerification = () => {
     verificationLinkSent.value = true;
 };
+
+if (photoInput.value) {
+    form.photo = photoInput.value.files[0];
+}
 
 const selectNewPhoto = () => {
     photoInput.value.click();
