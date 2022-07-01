@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActiveUsersController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
 Route::middleware(['auth:sanctum', 'verified',])->resource('users', UserController::class);
 
+Route::get('active/users', [ActiveUsersController::class, 'getUsers']);
 
 
 Route::middleware('auth:sanctum')->get('/chat/rooms', [ChatController::class, 'rooms']);

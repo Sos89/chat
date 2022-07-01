@@ -2,11 +2,14 @@
     <div class="for_users">
         <div class="for_name_surname">
             <img class="h-10 w-10 rounded-full object-cover" :src="message.user.profile_photo_url" :alt="message.user.name">
-            {{ message.user.name}} {{ message.user.surname}}
+            {{ message.user.name}} {{ message.user.surname }}
         </div>
         <div class="message">
             {{ message.message }}
         </div>
+<!--        <div class="ml-auto">-->
+<!--            {{ message.created_at }}-->
+<!--        </div>-->
     </div>
 
 </template>

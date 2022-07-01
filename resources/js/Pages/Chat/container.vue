@@ -12,15 +12,19 @@
         </template>
 
         <div class="py-12">
-            <div class="max-w-5xl mx-auto sm:px-4 lg:px-4">
+            <div class="max-w-5xl mx-auto sm:px-4 lg:px-4 flex m-auto">
+                <div class="shadow-xl w-48 bg-gray-200">
+                    <div class="online_users m-2" v-for="friend in onlineFriends">
+                        <img class="h-10 w-10 rounded-full object-cover" :src="friend.profile_photo_url" >
+                        {{ friend.name }} <div class="span"></div>
+                    </div>
+                </div>
                 <div class="shadow-xl">
-                    <users />
                     <message-container :messages="messages" />
                     <input-message
                         :room="currentRoom"
                         v-on:messagesent="getMessages()"
                         />
-
                 </div>
             </div>
         </div>
@@ -49,6 +53,7 @@ export default {
           chatRooms: [],
           currentRoom: [],
           messages: [],
+          onlineFriends: []
       }
     },
     watch: {
@@ -64,6 +69,18 @@ export default {
             if ( this.currentRoom.id ) {
                 let vm = this;
                 this.getMessages();
+
+                Echo.join(`plchat`).here((users) => {
+                    console.log('online_users',users)
+                    this.onlineFriends=users;
+                }).joining((user) => {
+                    this.onlineFriends.push(user)
+                    console.log('joining', user.name )
+                }).leaving((user) => {
+                    this.onlineFriends.splice(this.onlineFriends.indexOf(user),1);
+                    console.log('leaving', user.name )
+                })
+
                 window.Echo.private("chat." + this.currentRoom.id )
                     .listen('.message.new', e => {
                         vm.getMessages();
@@ -105,5 +122,18 @@ export default {
 </script>
 
 <style scoped>
-
+.online_users{
+    color: green;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.span{
+    background-color: green;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
 </style>
