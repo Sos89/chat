@@ -7,9 +7,6 @@
         <div class="message">
             {{ message.message }}
         </div>
-<!--        <div class="ml-auto">-->
-<!--            {{ message.created_at }}-->
-<!--        </div>-->
     </div>
 
 </template>

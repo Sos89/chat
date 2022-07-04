@@ -5,14 +5,14 @@
         </template>
 
         <div class="py-12 text-center">
-            <div class="max-w-5xl sm:px-4 lg:px-4 flex m-auto">
+            <div class="max-w-4xl sm:px-4 lg:px-4 flex m-auto">
                 <div class="shadow-xl w-48 bg-gray-200">
                     <div class="online_users m-2" v-for="friend in onlineFriends">
                         <img class="h-10 w-10 rounded-full object-cover" :src="friend.profile_photo_url" >
-                        {{ friend.name }} <div class="span"></div>
+                        <div class="span"></div> {{ friend.name }}
                     </div>
                 </div>
-                <div class="shadow-xl">
+                <div class="shadow-xl scroll-auto">
                     <message-container :messages="messages" />
                     <input-message
                         :room="currentRoom"
@@ -129,7 +129,7 @@ export default {
     background: #a09e9e;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    border-radius: 5px;
 }
 .span{
     background-color: green;
@@ -137,5 +137,6 @@ export default {
     height: 10px;
     border-radius: 50%;
     display: inline-block;
+    margin: 10px;
 }
 </style>

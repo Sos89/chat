@@ -28,18 +28,15 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     Route::get('/chat', function () {
-        return Inertia::render('Chat/container');})->name('chat');
+        return Inertia::render('Chat/container');
+    })->name('chat');
 });
 
 Route::middleware(['auth:sanctum', 'verified',])->resource('users', UserController::class);
@@ -50,4 +47,4 @@ Route::middleware('auth:sanctum')->get('/chat/room/{roomId}/messages', [ChatCont
 Route::middleware('auth:sanctum')->post('/chat/room/{roomId}/message', [ChatController::class, 'newMessage']);
 
 
-Route::middleware('auth:sanctum')->get('redirects', [HomeController::class, 'index']);
+Route::middleware('auth:sanctum')->get('/admin', [HomeController::class, 'index']);

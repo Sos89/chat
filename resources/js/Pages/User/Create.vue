@@ -10,6 +10,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="col-span-6 sm:col-span-4">
+<!--                            <JetFormSection @submitted="create">-->
                             <JetLabel for="name" value="Name" class="m-3"/>
                             <JetInput
                                 id="name"
@@ -21,6 +22,7 @@
                             <JetButton class="m-3">
                                 Save
                             </JetButton>
+<!--                            </JetFormSection>-->
                         </div>
                 </div>
             </div>
@@ -56,11 +58,17 @@ export default {
         JetActionMessage,
         JetSecondaryButton
     },
-    methods: {
-
+   setup() {
+       const create = () => {
+           form.post(route('admin.create'), {
+               preserveScroll: true,
+           });
+       }
+       return { form, create }
     }
-
 }
+
+
 </script>
 
 <style scoped>
