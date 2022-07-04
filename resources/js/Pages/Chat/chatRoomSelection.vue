@@ -1,9 +1,7 @@
 <template>
     <div class="grid grid-cols-2">
-        <div class="font-bold text-xl">
+        <div class="select_room">
             {{ selected.name }} Chat
-        </div>
-        <div>
             <select
                 v-model="selected"
                 @change="$emit('roomChanged', selected)"
@@ -37,5 +35,10 @@ export default {
 </script>
 
 <style scoped>
-
+.select_room{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
 </style>

@@ -26,12 +26,6 @@
                                         <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Surname
                                         </th>
-                                        <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Status
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Role
-                                        </th>
                                         <th scope="col" class="relative px-6 py-3">
                                            <span class="sr-white">Edit</span>
                                         </th>
@@ -58,14 +52,6 @@
                                                 <div class="text-sm text-gray-500">
                                                     {{ user.surname }}
                                                 </div>
-                                            </td>
-                                            <td class="text-center px-6 py-4 whitespace-nowrap">
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-800">
-                                                    Active
-                                                </span>
-                                            </td>
-                                            <td class="text-center px-6 py-4 whitespace-nowrap">
-                                                {{ user.role}}
                                             </td>
                                             <td class="text-center px-6 py-4 whitespace-nowrap">
                                                 <Link

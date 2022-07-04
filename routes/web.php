@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActiveUsersController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -43,9 +44,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
 Route::middleware(['auth:sanctum', 'verified',])->resource('users', UserController::class);
 
-Route::get('active/users', [ActiveUsersController::class, 'getUsers']);
-
 
 Route::middleware('auth:sanctum')->get('/chat/rooms', [ChatController::class, 'rooms']);
 Route::middleware('auth:sanctum')->get('/chat/room/{roomId}/messages', [ChatController::class, 'messages']);
 Route::middleware('auth:sanctum')->post('/chat/room/{roomId}/message', [ChatController::class, 'newMessage']);
+
+
+Route::middleware('auth:sanctum')->get('redirects', [HomeController::class, 'index']);

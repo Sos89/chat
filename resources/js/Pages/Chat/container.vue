@@ -1,18 +1,11 @@
 <template>
     <AppLayout title="Dashboard">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                <chat-room-selection
-                    v-if="currentRoom.id"
-                    :rooms="chatRooms"
-                    :currentRoom="currentRoom"
-                    v-on:roomChanged="setRoom( $event )"
-                />
-            </h2>
+
         </template>
 
-        <div class="py-12">
-            <div class="max-w-5xl mx-auto sm:px-4 lg:px-4 flex m-auto">
+        <div class="py-12 text-center">
+            <div class="max-w-5xl sm:px-4 lg:px-4 flex m-auto">
                 <div class="shadow-xl w-48 bg-gray-200">
                     <div class="online_users m-2" v-for="friend in onlineFriends">
                         <img class="h-10 w-10 rounded-full object-cover" :src="friend.profile_photo_url" >
@@ -25,6 +18,16 @@
                         :room="currentRoom"
                         v-on:messagesent="getMessages()"
                         />
+                </div>
+                <div class="shadow-xl">
+                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                        <chat-room-selection
+                            v-if="currentRoom.id"
+                            :rooms="chatRooms"
+                            :currentRoom="currentRoom"
+                            v-on:roomChanged="setRoom( $event )"
+                        />
+                    </h2>
                 </div>
             </div>
         </div>
@@ -123,8 +126,7 @@ export default {
 
 <style scoped>
 .online_users{
-    color: green;
-    margin-left: 20px;
+    background: #a09e9e;
     display: flex;
     align-items: center;
     justify-content: space-around;

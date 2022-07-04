@@ -56,6 +56,9 @@ export default {
         JetActionMessage,
         JetSecondaryButton
     },
+    methods: {
+
+    }
 
 }
 </script>

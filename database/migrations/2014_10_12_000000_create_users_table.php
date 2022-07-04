@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('gender');
             $table->string('status')->nullable();
             $table->string('email')->unique();
+            $table->string('role')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('profile_photo_path', 2048)->nullable();
-            $table->string('role')->default('user');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->timestamps();
