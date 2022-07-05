@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChatMessage;
 use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
+
+
 class UserController extends Controller
 {
-//    public function __construct()
-//    {
-//        $this->authorizeResource(User::class);
-//    }
 
     /**
      * Display a listing of the resource.
@@ -23,7 +23,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::get();
+        $role=Auth::user()->role;
+        if ($role == '1')
+        {
+            $users = User::get();
+            return Inertia::render('User/Dashboard', compact('users'));
+        }
+        else{
+            return Inertia::render('Dashboard');
+        }
        return Inertia::render('User/Dashboard', compact('users'));
     }
 
@@ -85,48 +93,17 @@ class UserController extends Controller
         $user->update($request->only('name', 'surname', 'gender'));
         return back();
     }
-/**
-//* @param  mixed  $user
-//* @param  array  $input
-//* @return void
-//*/
-//    public function update($user, array $input)
-//    {
-////        dd(2);
-//        Validator::make($input, [
-//            'name' => ['required', 'string', 'max:255'],
-//            'surname' => ['required', 'string', 'max:255'],
-//            'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
-//        ])->validateWithBag('updateProfileInformation');
-//
-//        if (isset($input['photo'])) {
-//            $user->updateProfilePhoto($input['photo']);
-//        }
-//
-//        if ($input['email'] !== $user->email &&
-//            $user instanceof MustVerifyEmail) {
-//            $this->updateVerifiedUser($user, $input);
-//        } else {
-//            $user->forceFill([
-//                'name' => $input['name'],
-//                'surname' => $input['surname'],
-//                'gender' => $input['gender'],
-//            ])->save();
-//        }
-//    }
-
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-//        $user = User::find($id);
-//        $user->deleteProfilePhoto();
-//        $user->tokens->each->delete();
-//        $user->delete();
-    }
+//    public function destroy($id)
+//    {
+//        $message = ChatMessage::find($id);
+//        $message>deleteProfilePhoto();
+//        $message>tokens->each->delete();
+//        $message>delete();
+//    }
 }

@@ -1,29 +1,34 @@
 <template>
     <AppLayout title="Dashboard">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                User Create
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
+                Create new Chat Room
             </h2>
         </template>
 
-        <div class="py-12">
+        <div class="py-12 m-auto w-96 text-center">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="bg-sky-100 overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="col-span-6 sm:col-span-4">
-<!--                            <JetFormSection @submitted="create">-->
+                                <!--name-->
                             <JetLabel for="name" value="Name" class="m-3"/>
                             <JetInput
                                 id="name"
                                 v-model="name"
                                 type="text"
-                                class="m-3 block w-1/3"
                                 autocomplete="name"
                             />
-                            <JetButton class="m-3">
-                                Save
-                            </JetButton>
-<!--                            </JetFormSection>-->
+                                <!--description-->
+                            <JetLabel for="description" value="Description" class="m-3"/>
+                            <JetInput
+                                id="description"
+                                v-model="description"
+                                type="text"
+                            />
                         </div>
+                    <JetButton class="m-3" @click="getRooms">
+                        Save
+                    </JetButton>
                 </div>
             </div>
         </div>
@@ -58,13 +63,25 @@ export default {
         JetActionMessage,
         JetSecondaryButton
     },
-   setup() {
-       const create = () => {
-           form.post(route('admin.create'), {
-               preserveScroll: true,
-           });
-       }
-       return { form, create }
+    data: function () {
+      return {
+          name: '',
+          description: ''
+      }
+    },
+    methods: {
+        getRooms(){
+            axios.post('/admin/save',
+                {
+                    name:this.name,
+                    description:this.description
+                })
+                .catch( error => {
+                    console.log( error.response )
+                })
+            this.name = ''
+            this.description = ''
+        },
     }
 }
 

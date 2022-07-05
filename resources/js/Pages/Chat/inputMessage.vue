@@ -6,7 +6,7 @@
                 v-model="message"
                 @keyup.enter="sendMessage()"
                 placeholder="See something..."
-                class="col-span-5 outline-none p-1"
+                class="col-span-5 outline-none p-1 grid"
             />
             <button
                 @click="sendMessage()"
@@ -29,6 +29,7 @@ export default {
         }
     },
     methods: {
+
         sendMessage() {
             if ( this.message == ' '){
                 return;
@@ -51,5 +52,7 @@ export default {
 </script>
 
 <style scoped>
-
+.grid{
+    border-radius: 10px;
+}
 </style>

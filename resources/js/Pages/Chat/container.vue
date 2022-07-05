@@ -12,8 +12,8 @@
                         <div class="span"></div> {{ friend.name }}
                     </div>
                 </div>
-                <div class="shadow-xl scroll-auto">
-                    <message-container :messages="messages" />
+                <div class="shadow-xl">
+                    <message-container :messages="messages"/>
                     <input-message
                         :room="currentRoom"
                         v-on:messagesent="getMessages()"

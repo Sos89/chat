@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ActiveUsersController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
@@ -40,6 +40,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 });
 
 Route::middleware(['auth:sanctum', 'verified',])->resource('users', UserController::class);
+
+Route::get('admin',[AdminController::class, 'index']);
+Route::post('/admin/save',[AdminController::class, 'save']);
 
 
 Route::middleware('auth:sanctum')->get('/chat/rooms', [ChatController::class, 'rooms']);

@@ -37,7 +37,7 @@ img{
     margin: 10px;
 }
 .message{
-    background: #b7b3b3;
+    background: #80f380;
     margin-left: 10px;
     margin-top: 10px;
     border-top-right-radius: 10px;

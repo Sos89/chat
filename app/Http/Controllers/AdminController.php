@@ -19,9 +19,15 @@ class AdminController extends Controller
         $users = User::get();
         return Inertia::render('User/Dashboard', compact('users'));
     }
-    public function create(Request $request){
-        ChatRoom::create([
-            'name' => $request['name']
+    public function save(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
         ]);
+        return ChatRoom::create([
+            'name' => $request['name'],
+            'description' => $request['description']
+        ]);
+
     }
 }

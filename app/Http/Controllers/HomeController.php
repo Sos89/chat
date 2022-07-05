@@ -14,7 +14,7 @@ class HomeController extends Controller
     {
         $role=Auth::user()->role;
 
-        if ($role == '1')
+        if ($role == 1)
         {
             $users = User::get();
             return Inertia::render('User/Dashboard', compact('users'));
