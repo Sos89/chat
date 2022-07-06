@@ -74,14 +74,11 @@ export default {
                 this.getMessages();
 
                 Echo.join(`plchat`).here((users) => {
-                    console.log('online_users',users)
                     this.onlineFriends=users;
                 }).joining((user) => {
                     this.onlineFriends.push(user)
-                    console.log('joining', user.name )
                 }).leaving((user) => {
                     this.onlineFriends.splice(this.onlineFriends.indexOf(user),1);
-                    console.log('leaving', user.name )
                 })
 
                 window.Echo.private("chat." + this.currentRoom.id )
@@ -126,13 +123,13 @@ export default {
 
 <style scoped>
 .online_users{
-    background: #a09e9e;
+    background: #f6f4f2;
     display: flex;
     align-items: center;
     border-radius: 5px;
 }
 .span{
-    background-color: green;
+    background-color: #71f171;
     width: 10px;
     height: 10px;
     border-radius: 50%;

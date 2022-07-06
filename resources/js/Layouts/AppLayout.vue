@@ -48,14 +48,26 @@ const logout = () => {
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+
+
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" v-if="$page.props.user.role == 0 ">
                                 <JetNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </JetNavLink>
                                 <JetNavLink :href="route('chat')" :active="route().current('chat')">
                                     Chat
                                 </JetNavLink>
-
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" v-else>
+                                <JetNavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Dashboard
+                                </JetNavLink>
+                                <JetNavLink :href="route('chat')" :active="route().current('chat')">
+                                    Chat
+                                </JetNavLink>
+<!--                                <JetNavLink :href="route('admin')" :active="route().current('admin')">-->
+<!--                                    Admin-->
+<!--                                </JetNavLink>-->
                             </div>
                         </div>
 
@@ -218,6 +230,9 @@ const logout = () => {
                         <JetResponsiveNavLink :href="route('chat')" :active="route().current('chat')">
                             Chat
                         </JetResponsiveNavLink>
+<!--                        <JetResponsiveNavLink :href="route('admin')" :active="route().current('admin')">-->
+<!--                            Admin-->
+<!--                        </JetResponsiveNavLink>-->
                     </div>
 
                     <!-- Responsive Settings Options -->

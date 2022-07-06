@@ -38,6 +38,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         return Inertia::render('Chat/container');
     })->name('chat');
 });
+//Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+//    Route::get('/admin', function () {
+//        return Inertia::render('User/Dashboard');
+//    })->name('admin');
+//});
 
 Route::middleware(['auth:sanctum', 'verified',])->resource('users', UserController::class);
 

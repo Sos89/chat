@@ -41,6 +41,7 @@ export default {
 .select_room{
     display: flex;
     flex-direction: column;
+    margin: 10px;
 }
 .select{
     width: 200px;

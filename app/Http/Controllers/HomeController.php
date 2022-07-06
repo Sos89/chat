@@ -13,7 +13,6 @@ class HomeController extends Controller
     public function index()
     {
         $role=Auth::user()->role;
-
         if ($role == 1)
         {
             $users = User::get();
