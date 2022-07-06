@@ -16,7 +16,7 @@
                     <message-container :messages="messages"/>
                     <input-message
                         :room="currentRoom"
-                        v-on:messagesent="getMessages()"
+                        @messagesent="getMessages()"
                         />
                 </div>
                 <div class="shadow-xl">

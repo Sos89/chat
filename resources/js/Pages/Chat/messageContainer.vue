@@ -1,6 +1,6 @@
 <template>
     <div class="h-96 w-max ml-auto bg-indigo-100">
-        <div class="h-full p-2 flex-col-reverse scroll" >
+        <div  id="scroll_message"  class="h-full p-2 flex-col-reverse scroll" >
             <div v-for="(message, index) in messages.slice().reverse()" :key="index">
                 <message-item :message="message"/>
             </div>
@@ -14,7 +14,10 @@ export default {
     name: "messageContainer",
     components: {MessageItem},
     props: ['messages'],
-
+    updated() {
+        const element =  document.getElementById('scroll_message')
+        element.scroll(0,element.scrollHeight)
+    }
 }
 </script>
 

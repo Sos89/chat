@@ -29,13 +29,11 @@ export default {
         }
     },
     methods: {
-
         sendMessage() {
-            if ( this.message == ' '){
-                return;
-            }
+            if ( this.message == ' ') return;
+
             axios.post('/chat/room/' + this.room.id + '/message', {
-                message: this.message
+                message: this.message,
             })
                 .then( response =>  {
                     if (response.status == 201) {
