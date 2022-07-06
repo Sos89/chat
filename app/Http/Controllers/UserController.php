@@ -77,33 +77,20 @@ class UserController extends Controller
         return Inertia::render('User/Edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User $user
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, User $user)
     {
-        $request->validate([
-            'name' => 'required',
-            'surname' => 'required',
-        ]);
-        $user->update($request->only('name', 'surname', 'gender'));
-        return back();
+        if (isset($request['photo'])) {
+            $user->updateProfilePhoto($request['photo']);
+        }
+            $user->forceFill([
+                'name' => $request['name'],
+                'surname' => $request['surname'],
+                'gender' => $request['gender'],
+            ])->save();
+        $users = User::get();
+        return Inertia::render('User/Dashboard', compact('users'));
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-//    public function destroy($id)
-//    {
-//        $message = ChatMessage::find($id);
-//        $message>deleteProfilePhoto();
-//        $message>tokens->each->delete();
-//        $message>delete();
-//    }
+
+
 }
