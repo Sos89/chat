@@ -1,7 +1,12 @@
 <template>
     <AppLayout title="Dashboard">
         <template #header>
-
+<!--            <Link-->
+<!--                :href="route('admin')"-->
+<!--                class="ml-2 text-indigo-600 hover:text-indigo-900"-->
+<!--            >-->
+<!--                Admin-->
+<!--            </Link>-->
         </template>
 
         <div class="py-12 text-center">
@@ -41,6 +46,7 @@ import MessageContainer from "./messageContainer";
 import InputMessage from "./inputMessage";
 import ChatRoomSelection from "./chatRoomSelection";
 import Users from "./users";
+import {Link} from "@inertiajs/inertia-vue3";
 export default {
     name: "container",
     props: ['users'],
@@ -50,6 +56,7 @@ export default {
         InputMessage,
         MessageContainer,
         ChatRoomSelection,
+        Link,
     },
     data: function (){
       return {
