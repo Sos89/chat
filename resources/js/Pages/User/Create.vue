@@ -6,9 +6,9 @@
             </h2>
         </template>
 
-        <div class="py-12 m-auto w-96 text-center">
+        <div class="py-12 m-auto w-1/2 h-96 text-center">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-sky-100 overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="bg-gray-300 overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="col-span-6 sm:col-span-4">
                                 <!--name-->
                             <JetLabel for="name" value="Name" class="m-3"/>

@@ -1,17 +1,12 @@
 <template>
     <AppLayout title="Dashboard">
         <template #header>
-<!--            <Link-->
-<!--                :href="route('admin')"-->
-<!--                class="ml-2 text-indigo-600 hover:text-indigo-900"-->
-<!--            >-->
-<!--                Admin-->
-<!--            </Link>-->
+
         </template>
 
         <div class="py-12 text-center">
             <div class="max-w-4xl sm:px-4 lg:px-4 flex m-auto">
-                <div class="shadow-xl w-48 bg-gray-200">
+                <div class="shadow-xl w-48 bg-gray-400">
                     <div class="online_users m-2" v-for="friend in onlineFriends">
                         <img class="h-10 w-10 rounded-full object-cover" :src="friend.profile_photo_url" >
                         <div class="span"></div> {{ friend.name }}
@@ -24,7 +19,7 @@
                         @messagesent="getMessages()"
                         />
                 </div>
-                <div class="shadow-xl">
+                <div class="shadow-xl bg-gray-400">
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                         <chat-room-selection
                             v-if="currentRoom.id"
@@ -46,7 +41,6 @@ import MessageContainer from "./messageContainer";
 import InputMessage from "./inputMessage";
 import ChatRoomSelection from "./chatRoomSelection";
 import Users from "./users";
-import {Link} from "@inertiajs/inertia-vue3";
 export default {
     name: "container",
     props: ['users'],
@@ -56,7 +50,6 @@ export default {
         InputMessage,
         MessageContainer,
         ChatRoomSelection,
-        Link,
     },
     data: function (){
       return {

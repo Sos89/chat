@@ -68,18 +68,18 @@ img{
     background: #bacab9;
     margin-right: 10px;
     margin-top: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-right-radius:12px;
+    border-bottom-right-radius:12px;
+    border-bottom-left-radius:12px;
     padding: 5px 20px;
 }
 .message2{
     background: rgba(42, 55, 105, 0.95);
     margin-right: 10px;
     margin-top: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-left-radius:12px;
+    border-bottom-right-radius:12px;
+    border-bottom-left-radius:12px;
     padding: 5px 20px;
 }
 </style>

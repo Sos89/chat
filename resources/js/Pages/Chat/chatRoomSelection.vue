@@ -1,19 +1,27 @@
 <template>
     <div class="">
         <div class="select_room">
-            <select
+<!--            <select-->
+<!--                v-model="selected"-->
+<!--                @change="$emit('roomChanged', selected)"-->
+<!--                class="float-right select">-->
+<!--                <option-->
+<!--                    v-for="(room, index ) in rooms"-->
+<!--                    :key="index"-->
+<!--                    :value=" room "-->
+<!--                    >-->
+<!--                    {{ room.name }} {{ room.description}}-->
+<!--                </option>-->
+<!--            </select>-->
+            <jet-button
                 v-model="selected"
+                v-for="(room, index ) in rooms"
+                :key="index"
                 @change="$emit('roomChanged', selected)"
-                class="float-right select">
-                <option
-                    v-for="(room, index ) in rooms"
-                    :key="index"
-                    :value=" room "
-                    >
-                    {{ room.name }} {{ room.description}}
-                </option>
-            </select>
 
+            >
+                {{ room.name }} {{ room.description}}
+            </jet-button>
         </div>
     </div>
 </template>
@@ -28,12 +36,13 @@ export default {
     props: ['rooms', 'currentRoom'],
     data: function (){
         return{
-            selected: ''
+            selected: '',
         }
     },
     created(){
         this.selected = this.currentRoom;
-    }
+        console.log(this.selected = this.currentRoom)
+    },
 }
 </script>
 

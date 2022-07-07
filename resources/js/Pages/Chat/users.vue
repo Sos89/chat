@@ -42,6 +42,6 @@ export default {
     height: 10px;
     border-radius: 50%;
     display: inline-block;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 </style>

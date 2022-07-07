@@ -9,7 +9,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="m-auto flex-shrink-0 h-40 w-40">
-                    <img :src="user.profile_photo_url" alt="" class="h-40 w-40 rounded-full">
+                    <img :src="user.profile_photo_url" alt="" class="h-40 w-40 rounded-full" >
                 </div>
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <div class="my-2 overflow-x-auto sm:-mx-6 lg:mx-8">
