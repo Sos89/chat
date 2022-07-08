@@ -1,27 +1,18 @@
 <template>
     <div class="">
         <div class="select_room">
-<!--            <select-->
-<!--                v-model="selected"-->
-<!--                @change="$emit('roomChanged', selected)"-->
-<!--                class="float-right select">-->
-<!--                <option-->
-<!--                    v-for="(room, index ) in rooms"-->
-<!--                    :key="index"-->
-<!--                    :value=" room "-->
-<!--                    >-->
-<!--                    {{ room.name }} {{ room.description}}-->
-<!--                </option>-->
-<!--            </select>-->
-            <jet-button
+            <select
                 v-model="selected"
-                v-for="(room, index ) in rooms"
-                :key="index"
                 @change="$emit('roomChanged', selected)"
-
-            >
-                {{ room.name }} {{ room.description}}
-            </jet-button>
+                class="float-right select bg-gray-600" >
+                <option
+                    v-for="(room, index ) in rooms"
+                    :key="index"
+                    :value=" room "
+                    >
+                    {{ room.name }} {{ room.description}}
+                </option>
+            </select>
         </div>
     </div>
 </template>
@@ -41,7 +32,6 @@ export default {
     },
     created(){
         this.selected = this.currentRoom;
-        console.log(this.selected = this.currentRoom)
     },
 }
 </script>
@@ -53,20 +43,20 @@ export default {
     margin: 10px;
 }
 .select{
-    width: 200px;
     text-align: center;
     font-size: 20px;
-    background: #5171f3;
     border-radius: 10px;
 }
 option{
     width: 100%;
     font-size: 18px;
-    background: #edddd5;
+    background: rgb(31 41 55 / var(--tw-bg-opacity));
+    margin-top: 11px !important;
     cursor: pointer!important;
 }
 .select:hover{
-    background: #244df4;
     cursor: pointer;
+    background: #282d35;
+    color: #809cc0;
 }
 </style>

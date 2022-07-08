@@ -73,12 +73,12 @@ export default {
                 let vm = this;
                 this.getMessages();
 
-                Echo.join(`plchat`).here((users) => {
+                Echo.join(`chat`).here((users) => {
                     this.onlineFriends=users;
-                }).joining((user) => {
-                    this.onlineFriends.push(user)
-                }).leaving((user) => {
-                    this.onlineFriends.splice(this.onlineFriends.indexOf(user),1);
+                }).joining((users) => {
+                    this.onlineFriends.push(users)
+                }).leaving((users) => {
+                    this.onlineFriends.splice(this.onlineFriends.indexOf(users),1);
                 })
 
                 window.Echo.private("chat." + this.currentRoom.id )
@@ -102,7 +102,6 @@ export default {
         },
         setRoom ( room ) {
             this.currentRoom = room;
-
         },
         getMessages(){
             axios.get('/chat/room/' + this.currentRoom.id + '/messages')
@@ -123,10 +122,10 @@ export default {
 
 <style scoped>
 .online_users{
-    background: #f6f4f2;
+    background: #f8f2ed;
     display: flex;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 .span{
     background-color: #71f171;

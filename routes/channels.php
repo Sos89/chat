@@ -23,7 +23,7 @@ Broadcast::channel('chat.{roomId}', function ($user, $roomId) {
     }
 });
 
-Broadcast::channel('plchat', function ($user) {
+Broadcast::channel('chat', function ($user) {
     if (auth()->check()) {
         return $user;
     }

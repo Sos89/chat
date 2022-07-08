@@ -27,7 +27,9 @@ class AdminController extends Controller
         ]);
         ChatRoom::create([
             'name' => $request['name'],
-            'description' => $request['description']
+            'description' => $request['description'],
+            'created_at'=>NOW(),
+            'updated_at'=>NOW(),
         ]);
         $users = User::get();
         return Inertia::render('User/Dashboard', compact('users'));
