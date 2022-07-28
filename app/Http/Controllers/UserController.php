@@ -78,7 +78,7 @@ class UserController extends Controller
                 'gender' => $request['gender'],
             ])->save();
         $users = User::get();
-        return Inertia::render('User/Dashboard', compact('users'));
+        return Inertia::render('User/index', compact('users'));
     }
 
 
