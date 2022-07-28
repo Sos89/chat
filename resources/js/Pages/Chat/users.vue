@@ -1,6 +1,6 @@
 <template>
 <div class="h-96 w-60">
-    <div v-for="(user, index) in dataUser" :key="index">
+    <div v-for="user in dataUser" :key="user.id">
       {{ user.name}} <div class="span"></div>
     </div>
 </div>
@@ -13,7 +13,8 @@ export default {
     data(){
         return {
             dataUser:{},
-            activeUsers: []
+            activeUsers: [],
+            message: ''
         }
     },
 
@@ -24,13 +25,12 @@ export default {
                     this.dataUser = response.data
                 })
                 .catch( error => {
-                    console.log( error )
+                    this.message = error.response.data
                 })
         },
     },
     mounted() {
         this.getUsers();
-
     }
 }
 </script>

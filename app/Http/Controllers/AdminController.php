@@ -17,7 +17,7 @@ class AdminController extends Controller
     public function index()
     {
         $users = User::get();
-        return Inertia::render('User/Dashboard', compact('users'));
+        return Inertia::render('User/index', compact('users'));
     }
 
     public function save(Request $request){
@@ -31,8 +31,7 @@ class AdminController extends Controller
             'created_at'=>NOW(),
             'updated_at'=>NOW(),
         ]);
-        $users = User::get();
-        return Inertia::render('User/Dashboard', compact('users'));
+        return Inertia::render('User/index');
 
     }
 }

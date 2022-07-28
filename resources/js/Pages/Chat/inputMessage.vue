@@ -1,6 +1,6 @@
 <template>
     <div class="relative h-10 m-1">
-        <div style="border-top: 1px solid #e6e6e6" class="grid grid-cols-6">
+        <div class="grid grid-cols-6">
             <input
                 type="text"
                 v-model="message"
@@ -25,10 +25,17 @@ export default {
     props: ['room'],
     data: function (){
         return {
-            message: ''
+            message: '',
+            messages: ''
         }
     },
     methods: {
+        messageRequired(value) {
+            if (value && value.trim()) {
+                return true;
+            }
+            return 'Message is required !';
+        },
         sendMessage() {
             if ( this.message == ' ') return;
 
@@ -38,11 +45,11 @@ export default {
                 .then( response =>  {
                     if (response.status == 201) {
                         this.message = '';
-                        this.$emit('messagesent');
+                        this.$emit('messageSend');
                     }
                 })
                 .catch( error => {
-                console.log( error )
+                    this.messages = error.response.data
             })
         }
     }
@@ -52,5 +59,6 @@ export default {
 <style scoped>
 .grid{
     border-radius: 10px;
+    border-top: 1px solid #e6e6e6
 }
 </style>

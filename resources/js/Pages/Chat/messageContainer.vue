@@ -25,6 +25,5 @@ export default {
 .scroll{
     overflow-x: hidden;
     overflow-y: scroll;
-    /*width: 400px;*/
 }
 </style>

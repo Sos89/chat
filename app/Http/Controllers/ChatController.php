@@ -11,10 +11,10 @@ use App\Events\NewChatMessage;
 
 class ChatController extends Controller
 {
-    public function rooms(Request $request){
+    public function rooms(){
         return ChatRoom::all();
     }
-    public function messages(Request $request, $roomId){
+    public function messages($roomId){
         return ChatMessage::where('chat_room_id', $roomId)
             ->with('user')
             ->orderBy('created_at', 'DESC')

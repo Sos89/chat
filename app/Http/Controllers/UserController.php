@@ -27,12 +27,12 @@ class UserController extends Controller
         if ($role == '1')
         {
             $users = User::get();
-            return Inertia::render('User/Dashboard', compact('users'));
+            return Inertia::render('User/index', compact('users'));
         }
         else{
             return Inertia::render('Dashboard');
         }
-       return Inertia::render('User/Dashboard', compact('users'));
+       return Inertia::render('User/index', compact('users'));
     }
 
     /**

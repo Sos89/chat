@@ -1,9 +1,93 @@
-
+<template>
+    <AppLayout title="Dashboard">
+        <div class="py-12 ">
+            <div class="max-w-5xl mx-auto sm:px-6 lg:px-8 ">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <JetFormSection @submitted="updateProfileInformation">
+                        <template #form>
+                            <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-6 sm:col-span-4 ">
+                                <!-- Profile Photo File Input -->
+                                <input
+                                    ref="photoInput"
+                                    type="file"
+                                    class="hidden"
+                                    @change="updatePhotoPreview"
+                                >
+                                <JetLabel for="photo" value="Photo" />
+                                <!-- Current Profile Photo -->
+                                <div v-show="! photoPreview" class="mt-2">
+                                    <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-20 w-20 object-cover">
+                                </div>
+                                <!-- New Profile Photo Preview -->
+                                <div v-show="photoPreview" class="mt-2"><span
+                                    class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
+                                    :style="'background-image: url(\'' + photoPreview + '\');'"
+                                />
+                                </div>
+                                <JetSecondaryButton class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">
+                                    Select A New Photo
+                                </JetSecondaryButton>
+                                <JetSecondaryButton
+                                    v-if="user.profile_photo_path"
+                                    type="button"
+                                    class="mt-2"
+                                    @click.prevent="deletePhoto"
+                                >
+                                    Remove Photo
+                                </JetSecondaryButton>
+                                <JetInputError :message="form.errors.photo" class="mt-2" />
+                            </div>
+                            <!-- Name -->
+                            <div class="col-span-6 sm:col-span-4">
+                                <JetLabel for="name" value="Name" />
+                                <JetInput
+                                    id="name"
+                                    v-model="form.name"
+                                    type="text"
+                                    class="mt-1 block w-full"
+                                    autocomplete="name"
+                                />
+                                <JetInputError :message="form.errors.name" class="mt-2" />
+                            </div>
+                            <!-- Surname -->
+                            <div class="col-span-6 sm:col-span-4">
+                                <JetLabel for="surname" value="Surname" />
+                                <JetInput
+                                    id="surname"
+                                    v-model="form.surname"
+                                    type="text"
+                                    class="mt-1 block w-full"
+                                />
+                                <JetInputError :message="form.errors.name" class="mt-2" />
+                            </div>
+                            <!-- Gender  -->
+                            <div class="col-span-6 sm:col-span-4">
+                                <JetLabel for="gender" value="Select you gender" />
+                                <select name="gender" id="gender" v-model="form.gender" class="mt-1 block w-full" required autofocus>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </template>
+                        <template #actions>
+                            <JetActionMessage :on="form.recentlySuccessful" class="mr-3">
+                                Saved.
+                            </JetActionMessage>
+                            <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                Save
+                            </JetButton>
+                        </template>
+                    </JetFormSection>
+                </div>
+            </div>
+        </div>
+    </AppLayout>
+</template>
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { ref } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
-import { Link, useForm } from '@inertiajs/inertia-vue3';
+import { useForm } from '@inertiajs/inertia-vue3';
 import JetButton from '@/Jetstream/Button.vue';
 import JetFormSection from '@/Jetstream/FormSection.vue';
 import JetInput from '@/Jetstream/Input.vue';
@@ -64,92 +148,7 @@ const clearPhotoFileInput = () => {
     }
 };
 </script>
-<template>
-    <AppLayout title="Dashboard">
-        <div class="py-12 ">
-            <div class="max-w-5xl mx-auto sm:px-6 lg:px-8 ">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <JetFormSection @submitted="updateProfileInformation">
-                        <template #form>
-                            <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-6 sm:col-span-4 ">
-                                <!-- Profile Photo File Input -->
-                                <input
-                                    ref="photoInput"
-                                    type="file"
-                                    class="hidden"
-                                    @change="updatePhotoPreview"
-                                >
-                                <JetLabel for="photo" value="Photo" />
-                                <!-- Current Profile Photo -->
-                                <div v-show="! photoPreview" class="mt-2">
-                                    <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-20 w-20 object-cover">
-                                </div>
-                                <!-- New Profile Photo Preview -->
-                                <div v-show="photoPreview" class="mt-2"><span
-                                    class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
-                                    :style="'background-image: url(\'' + photoPreview + '\');'"
-                                />
-                                </div>
-                                <JetSecondaryButton class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">
-                                    Select A New Photo
-                                </JetSecondaryButton>
-                                <JetSecondaryButton
-                                    v-if="user.profile_photo_path"
-                                    type="button"
-                                    class="mt-2"
-                                    @click.prevent="deletePhoto"
-                                >
-                                    Remove Photo
-                                </JetSecondaryButton>
-                                <JetInputError :message="form.errors.photo" class="mt-2" />
-                            </div>
-                            <!-- Name -->
-                            <div class="col-span-6 sm:col-span-4">
-                                <JetLabel for="name" value="Name" />
-                                <JetInput
-                                    id="name"
-                                    v-model="form.name"
-                                    type="text"
-                                    class="mt-1 block w-full"
-                                    autocomplete="name"
-                                />
-                                <JetInputError :message="form.errors.name" class="mt-2" />
-                            </div>
-                            <!-- Surname -->
-                            <div class="col-span-6 sm:col-span-4">
-                                <JetLabel for="surname" value="Surname" />
-                                <JetInput
-                                    id="surname"
-                                    v-model="form.surname"
-                                    type="text"
-                                    class="mt-1 block w-full"
-                                    autocomplete="name"
-                                />
-                                <JetInputError :message="form.errors.name" class="mt-2" />
-                            </div>
-                            <!-- Gender  -->
-                            <div class="col-span-6 sm:col-span-4">
-                                <JetLabel for="gender" value="Select you gender" />
-                                <select name="gender" id="gender" v-model="form.gender" class="mt-1 block w-full" required autofocus>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                            </div>
-                        </template>
-                        <template #actions>
-                            <JetActionMessage :on="form.recentlySuccessful" class="mr-3">
-                                Saved.
-                            </JetActionMessage>
-                            <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                                Save
-                            </JetButton>
-                        </template>
-                    </JetFormSection>
-                </div>
-            </div>
-        </div>
-        </AppLayout>
-</template>
+
 
 
 

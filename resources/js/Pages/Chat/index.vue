@@ -16,7 +16,7 @@
                     <message-container :messages="messages"/>
                     <input-message
                         :room="currentRoom"
-                        @messagesent="getMessages()"
+                        @messageSend="getMessages()"
                         />
                 </div>
                 <div class="shadow-xl bg-gray-400">
@@ -56,6 +56,7 @@ export default {
           chatRooms: [],
           currentRoom: [],
           messages: [],
+          message: [],
           onlineFriends: []
       }
     },
@@ -97,7 +98,7 @@ export default {
                 this.setRoom( response.data[0]);
             })
                 .catch( error => {
-                    console.log( error )
+                    this.message = error.response.data
                 })
         },
         setRoom ( room ) {
@@ -109,7 +110,7 @@ export default {
                     this.messages = response.data;
                 })
                 .catch( error => {
-                    console.log( error );
+                    this.message = error.response.data
                 })
         },
 

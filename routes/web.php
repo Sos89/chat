@@ -35,7 +35,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 });
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     Route::get('/chat', function () {
-        return Inertia::render('Chat/container');
+        return Inertia::render('Chat/index');
     })->name('chat');
 });
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
